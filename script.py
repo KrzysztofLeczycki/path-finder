@@ -4,12 +4,18 @@ from data import locations, resources_list
 
 
 #
-# Create the graph from the locations dictionary
+# Construct the graph with connections
 # 
 
+# Initialize the graph
 city_map = Graph()
 for location in locations:
     new_vertex = Vertex(location)
-    print(new_vertex.value['name'])
-    #city_map.add_vertex(new_vertex)
-  
+    city_map.add_vertex(new_vertex)
+
+# Create connections
+#for vertex in city_map.graph_dict:
+ #   city_map.add_connection(vertex)
+    
+#print(city_map.graph_dict) 
+print(city_map.graph_dict['Redaction'])

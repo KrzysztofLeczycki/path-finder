@@ -3,8 +3,12 @@ class Graph:
         self.graph_dict = {}
 
     def add_vertex(self, vertex):
-        self.graph_dict[vertex.value] = vertex
+        self.graph_dict[vertex.value['name']] = vertex
 
-    def add_connection(self, first_vertex, second_vertex, length=0):
-        self.graph_dict[first_vertex.value].add_connection(second_vertex.value, length)
-        self.graph_dict[second_vertex.value].add_connection(first_vertex.value)
+    def add_connection(self, from_vertex):
+        for location in from_vertex.value['connections']:
+            self.graph_dict[from_vertex].add_edge(location['name'], location['length'])
+        
+        
+        #self.graph_dict[first_vertex.value].add_connection(second_vertex.value, length)
+        #self.graph_dict[second_vertex.value].add_connection(first_vertex.value)
