@@ -14,8 +14,7 @@ for location in locations:
     city_map.add_vertex(new_vertex)
 
 # Create connections
-#for vertex in city_map.graph_dict:
- #   city_map.add_connection(vertex)
+for vertex, content in city_map.graph_dict.items():
+    city_map.add_connection(content)
+    #print(content.get_roads())
     
-#print(city_map.graph_dict) 
-print(city_map.graph_dict['Redaction'])

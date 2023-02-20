@@ -7,8 +7,6 @@ class Graph:
 
     def add_connection(self, from_vertex):
         for location in from_vertex.value['connections']:
-            self.graph_dict[from_vertex].add_edge(location['name'], location['length'])
+            self.graph_dict[from_vertex.value['name']].add_road(location['name'], location['length'])
         
         
-        #self.graph_dict[first_vertex.value].add_connection(second_vertex.value, length)
-        #self.graph_dict[second_vertex.value].add_connection(first_vertex.value)
