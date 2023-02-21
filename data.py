@@ -119,7 +119,7 @@ locations = [
         {'name': 'Trade District', 'length': 1}, 
         ], 
     'resources':['unique items', 'information']},
-    {'name': 'Docks', 
+    {'name': 'River Docks', 
     'connections': [
         {'name': 'Trade District', 'length': 1}, 
         ], 

@@ -1,6 +1,6 @@
 from vertex import Vertex
 from graph import Graph
-from data import locations, resources_list
+from data import locations, resources
 
 
 #
@@ -18,3 +18,4 @@ for vertex, content in city_map.graph_dict.items():
     city_map.add_connection(content)
     #print(content.get_roads())
     
+print(city_map.split_path('Northside', 'Hospital', 3))
