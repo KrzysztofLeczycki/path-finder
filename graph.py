@@ -46,6 +46,7 @@ class Graph:
                     break
                 distance = self.graph_dict[current_place].roads[path[0]]
                 if range < distance:
+                    moves_per_round.append(f'no enough action points to move to the {target}')
                     break
                 avaible_move -= distance
             moves_per_round.append(current_round)
