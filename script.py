@@ -18,4 +18,4 @@ for vertex, content in city_map.graph_dict.items():
     city_map.add_connection(content)
     #print(content.get_roads())
     
-print(city_map.split_path('Northside', 'Hospital', 3))
+print(city_map.split_path('Northside', 'Hospital', 2))

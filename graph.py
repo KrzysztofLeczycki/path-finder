@@ -42,15 +42,17 @@ class Graph:
             while avaible_move > 0:
                 current_place = path.pop(0)
                 current_round.append(current_place)
+                if len(path) < 1:
+                    break
                 distance = self.graph_dict[current_place].roads[path[0]]
-                print(current_round)
-                if range < distance or len(path) == 0:
+                if range < distance:
                     break
                 avaible_move -= distance
             moves_per_round.append(current_round)
             avaible_move = copy(range)
 
-        return moves_per_round
+        moves_per_round_strings = [' -> '.join(array) for array in moves_per_round]
+        return moves_per_round_strings
 
 
                         
