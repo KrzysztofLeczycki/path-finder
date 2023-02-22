@@ -32,9 +32,9 @@ class Graph:
                         queue.append([connection, path + [connection]])
 
 
-    def split_path(self, start, target, range):
+    def split_path(self, start, target, move_points):
         path = self.bfs_search_path(start, target)
-        avaible_move = copy(range)
+        avaible_move = copy(move_points)
         moves_per_round = []
 
         while path:
@@ -45,14 +45,18 @@ class Graph:
                 if len(path) < 1:
                     break
                 distance = self.graph_dict[current_place].roads[path[0]]
-                if range < distance:
+                if move_points < distance:
                     moves_per_round.append(f'no enough action points to move to the {target}')
                     break
                 avaible_move -= distance
             moves_per_round.append(current_round)
-            avaible_move = copy(range)
+            avaible_move = copy(move_points)
 
+        # Change internal lists in moves_per_round into strings  
+        for i in range(1, len(moves_per_round)):
+            moves_per_round[i].insert(0, moves_per_round[i-1][-1])
         moves_per_round_strings = [' -> '.join(array) for array in moves_per_round]
+        
         return moves_per_round_strings
 
 
