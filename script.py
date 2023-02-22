@@ -77,8 +77,8 @@ while want_finish == 'n':
         for resource in found_resources:
             print(f'-- {resource}')
 
-        if len(found_resources == 1):
-            want_check = str(input(f'\nDo you want check where you can find {found_resources[0]}? For yes type y, for no type n')).lower()
+        if len(found_resources)  == 1:
+            want_check = str(input(f'\nDo you want check where you can find {found_resources[0]}? For yes type y, for no type n.: ')).lower()
             if want_check == 'y':
                 selected_resource = found_resources[0]
                 print(f'\nYou can find {selected_resource} in:')
@@ -88,13 +88,13 @@ while want_finish == 'n':
                     if selected_resource in sublist_head.get_value()['resources']:
                         while sublist_head.get_next_node() is not None:
                             sublist_head_resources = ', '.join(sublist_head.get_value()['resources'])
-                            sublist_head_neighborhood = ', '.join(city_map[sublist_head.get_value()['name']].get_roads())
-                            print(f'''~~~~~~~~~~~~~~~~~~~~
-                            Name: {sublist_head.get_value()['name']}
-                            Resources: {sublist_head_resources}
-                            Neighboring places: {sublist_head_neighborhood}
-                            ~~~~~~~~~~~~~~~~~~~~\n
-                            ''')
+                            sublist_head_neighborhood = ', '.join(city_map.graph_dict[sublist_head.get_value()['name']].get_roads())
+                            sublist_head_name = sublist_head.get_value()['name']
+                            print('~~~~~~~~~~~~~~~~~~~~')
+                            print(f'Name: {sublist_head_name}')
+                            print(f'Resources: {sublist_head_resources}')
+                            print(f'Neighboring places: {sublist_head_neighborhood}')
+                            print('~~~~~~~~~~~~~~~~~~~~\n')      
                             sublist_head = sublist_head.get_next_node()
                     locations_linked_list_head = locations_linked_list_head.get_next_node()
     
