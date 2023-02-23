@@ -55,10 +55,9 @@ print(
 
 # The program main loop
 while want_finish == 'n':
-    found_resources = []
-    
     selected_resource = ''
     while len(selected_resource) == 0:
+        found_resources = []
         # Search for user input in resources linked list
         while len(found_resources) == 0:
             
@@ -77,8 +76,8 @@ while want_finish == 'n':
         for resource in found_resources:
             print(f'-- {resource}')
 
-        if len(found_resources)  == 1:
-            want_check = str(input(f'\nDo you want check where you can find {found_resources[0]}? For yes type y, for no type n.: ')).lower()
+        if len(found_resources) == 1:
+            want_check = str(input(f'\nDo you want check where you can find {found_resources[0]}? For yes type y, for no type n: ')).lower()
             if want_check == 'y':
                 selected_resource = found_resources[0]
                 print(f'\nYou can find {selected_resource} in:')
