@@ -179,17 +179,17 @@ locations = [
     'resources':[]},
     {'name': 'Guesthouse', 
     'connections': [
-        {'name': 'SouthSide', 'length': 1}, 
+        {'name': 'Southside', 'length': 1}, 
         ], 
     'resources':['health', 'allies']},
     {'name': 'Church', 
     'connections': [
-        {'name': 'SouthSide', 'length': 1}, 
+        {'name': 'Southside', 'length': 1}, 
         ], 
     'resources':['mind health']},
     {'name': 'Historical Association', 
     'connections': [
-        {'name': 'SouthSide', 'length': 1}, 
+        {'name': 'Southside', 'length': 1}, 
         ], 
     'resources':['skills', 'spells']},
     {'name': 'Uptown', 
