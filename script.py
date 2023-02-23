@@ -1,7 +1,7 @@
 from vertex import Vertex
 from graph import Graph
 from linked_list import LinkedList
-from data import locations, resources
+from data import locations, resources, locations_names
 
 
 #
@@ -56,6 +56,7 @@ print(
 # The program main loop
 while want_finish == 'n':
     selected_resource = ''
+    mathing_places = {}
     while len(selected_resource) == 0:
         found_resources = []
         # Search for user input in resources linked list
@@ -76,6 +77,7 @@ while want_finish == 'n':
         for resource in found_resources:
             print(f'-- {resource}')
 
+        # Generate and print places with selected resource
         if len(found_resources) == 1:
             want_check = str(input(f'\nDo you want check where you can find {found_resources[0]}? For yes type y, for no type n: ')).lower()
             if want_check == 'y':
@@ -84,6 +86,7 @@ while want_finish == 'n':
                 locations_linked_list_head = locations_linked_list.get_head_node()
                 while locations_linked_list_head.get_next_node() is not None:
                     sublist_head = locations_linked_list_head.get_value().get_head_node()
+                    index = 1
                     if selected_resource in sublist_head.get_value()['resources']:
                         while sublist_head.get_next_node() is not None:
                             sublist_head_resources = ', '.join(sublist_head.get_value()['resources'])
@@ -93,12 +96,45 @@ while want_finish == 'n':
                             print(f'Name: {sublist_head_name}')
                             print(f'Resources: {sublist_head_resources}')
                             print(f'Neighboring places: {sublist_head_neighborhood}')
-                            print('~~~~~~~~~~~~~~~~~~~~\n')      
+                            print('~~~~~~~~~~~~~~~~~~~~\n')  
+                            mathing_places[str(index)] = sublist_head_name
                             sublist_head = sublist_head.get_next_node()
+                            index += 1
                     locations_linked_list_head = locations_linked_list_head.get_next_node()
+
+    # Print path to selected resource from the start location
+    exit_path_finding = 'n'
+    while exit_path_finding == 'n':
+        # Choose place to visit from searching results
+        print('Where do you want to go? \nChoose a number from list below:')
+        for key, value in mathing_places.items():
+            print(f'-- {key} - {value}')
+        index_to_go = str(input('Your choice: '))
+        place_to_go = mathing_places[index_to_go]
+
+        # Choose starting place
+        print('Where you are? \nChoose a number from list below:')
+        for key, value in locations_names.items():
+            print(f'-- {key} - {value}')
+        index_start = str(input('Your choice: '))
+        start_place = locations_names[index_start]
+
+        move_range = int(input('What is your move range? Type integer number: '))
+
+        # Show possible path
+        possible_path = city_map.split_path(start_place, place_to_go, move_range)
+        print(f'It takes you {len(possible_path)} round(s) to arrive to {place_to_go} from {start_place}.')
+        print('You can go this way: ')
+        for i in range(0, len(possible_path)):
+            print(f'{i + 1}: {possible_path[i]}')
+        
+        # Exit path search loop
+        exit_path_question = input('Do you want to end path search? For yes type y, for no type n: ').lower()
+        if exit_path_question == 'y':
+            exit_path_finding = 'y'
     
     # Exit the main loop
-    question = str(input("\nDo you want finish searching? (for yes type 'y'): ")).lower()
+    question = str(input("\nDo you want finish searching for resources? (for yes type 'y'): ")).lower()
     if question == 'y':
         want_finish = 'y'
 

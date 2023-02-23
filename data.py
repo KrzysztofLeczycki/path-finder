@@ -222,3 +222,11 @@ locations = [
 resources = set()
 for location in locations:
    resources.update(location['resources'])
+
+
+# Extract locations names from locations dict
+locations_names = {}
+index = 1
+for location in locations:
+   locations_names[str(index)] = location['name']
+   index += 1
